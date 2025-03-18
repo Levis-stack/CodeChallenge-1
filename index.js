@@ -14,9 +14,11 @@ function displayRamens() {
         img.style.cursor = 'pointer';
         img.style.width = '250px';
         img.style.borderRadius = '2px';
+        img.style.margin = '3px';
         
         document.querySelector('#ramen-menu').appendChild(img);
         img.addEventListener("click", () => handleClick(ramen));
+        
     });
 }
 
@@ -31,38 +33,44 @@ function handleClick(ramen) {
         <p>Comment: ${ramen.comment}</p>
     `;
 }
-
+   
 function addSubmitListener() {
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('form').addEventListener('submit', e => {
-            e.preventDefault();
+    console.log(document.querySelector('form'));
 
-            const name = document.getElementById('new-name').value; 
-            const restaurant = document.getElementById('new-restaurant').value;
-            const image = document.getElementById('new-image').value;
-            const rating = document.getElementById('new-rating').value;
-            const comment = document.getElementById('new-comment').value;
+    document.querySelector('form').addEventListener('submit', e => {
+        e.preventDefault();
 
-            const newRamen = { name, restaurant, image, rating, comment };
+        const name = document.getElementById('ramen-name').value;
+        const restaurant = document.getElementById('ramen-restaurant').value;
+        const image = document.getElementById('ramen-image').value;
+        const rating = document.getElementById('ramen-rating').value;
+        const comment = document.getElementById('ramen-comment').value;
 
-            const newImg = document.createElement('img');
-            newImg.src = newRamen.image;
-            newImg.alt = newRamen.name;
-            newImg.style.cursor = 'pointer';
-            newImg.style.width = '250px';
-            newImg.style.borderRadius = '2px';
+        if (!name || !restaurant || !image || !rating || !comment) {
+            alert("Please fill out all fields!"); 
+            return;
+        }
 
-            document.querySelector('#ramen-menu').appendChild(newImg);
-            newImg.addEventListener("click", () => handleClick(newRamen));
-
-            e.target.reset(); 
-        });
+        const newRamen = { 
+            name,
+            restaurant,
+            image, 
+            rating, 
+            comment, 
+        };
+       
+        ramens.push(newRamen)
+        displayRamens();
+        newRamen.addEventListener("click", handleClick(newRamen))
+        e.target.reset(); 
+        
     });
 }
 
+        
 function addItUp() {
     displayRamens();
     addSubmitListener();
+    handleClick(ramens[0]);
 }
-
 addItUp();

@@ -14,20 +14,21 @@
     <div id="ramen-detail">
         
    </div>
+   
    <div id="form">
-   <form action="submission">
+   <form id="new-ramen">
         <h3>Add New Ramen</h3>
          <label>Name:</label>
-         <input type="text" id="-nameramen" >
+         <input type="text" id="ramen-name" name="ramen-name">
          <label>Restaurant:</label>
-         <input type="text" id="ramen-restaurant" >
-         <label>Image:</label>
-         <input type="text" id="ramen-image" >
+         <input type="text" id="ramen-restaurant" name="ramen-restaurant" >
+         <label>Image URL:</label>
+         <input type="text" id="ramen-image" name="ramen-image">
          <label>Rating:</label>
-         <input type="text" id="ramen-rating" >
+         <input type="text" id="ramen-rating" name="ramen-rating" >
          <label>Comment:</label>
-         <input type="text" id="ramen-comment" >
-         <button type="submit">Create</button>
+         <input type="text" id="ramen-comment" name="ramen-comment">
+         <input type="submit" class="btn" value="submit">
    </form>
 </div>
     
