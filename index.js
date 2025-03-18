@@ -60,7 +60,6 @@ function addSubmitListener() {
         };
        
         ramens.push(newRamen)
-        displayRamens();
         newRamen.addEventListener("click", handleClick(newRamen))
         e.target.reset(); 
         
