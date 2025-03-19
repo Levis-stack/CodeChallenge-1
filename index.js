@@ -14,7 +14,7 @@ function displayRamens(ramens) {
         img.alt = ramen.name;
         img.style.cursor = 'pointer';
         img.style.width = '250px';
-        img.style.borderRadius = '2px';
+        img.style.borderRadius = '20px';
         img.style.margin = '3px';
         
         ramenMenu.appendChild(img);
@@ -27,7 +27,7 @@ function handleClick(ramen) {
     const detailDiv = document.querySelector("#ramen-detail");
 
     detailDiv.innerHTML = `
-        <img src="${ramen.image}" alt="${ramen.name}" style="width: 300px; border-radius: 5px;">
+        <img src="${ramen.image}" alt="${ramen.name}" style="width: 300px; border-radius: 20px;">
         <h2>${ramen.name}</h2>
         <h3>Restaurant: ${ramen.restaurant}</h3>
         <p>Rating: ${ramen.rating}</p>
