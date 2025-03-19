@@ -5,8 +5,9 @@ const ramens = [
     { id: 4, name: "Diego Ramen", restaurant: "Mugo-ya", image: "images/j-lbxLlgi_8_w-unsplash.jpg", rating: 4, comment: "Very flavorful!" },
     { id: 5, name: "Susan Ramen", restaurant: "Konichiwa-ya", image: "images/max-oh-jOFGlU-vpY8-unsplash.jpg", rating: 5, comment: "Delicious!" }
 ]; 
-
-function displayRamens() {
+const ramenMenu = document.querySelector('#ramen-menu');
+function displayRamens(ramens) {
+    ramenMenu.innerHTML=""
     ramens.forEach(ramen => {
         const img = document.createElement('img');
         img.src = ramen.image;
@@ -16,12 +17,12 @@ function displayRamens() {
         img.style.borderRadius = '2px';
         img.style.margin = '3px';
         
-        document.querySelector('#ramen-menu').appendChild(img);
+        ramenMenu.appendChild(img);
         img.addEventListener("click", () => handleClick(ramen));
         
     });
 }
-
+displayRamens(ramens)
 function handleClick(ramen) {
     const detailDiv = document.querySelector("#ramen-detail");
 
@@ -51,24 +52,24 @@ function addSubmitListener() {
             return;
         }
 
-        const newRamen = { 
+        const newRamen = {
             name,
             restaurant,
             image, 
             rating, 
             comment, 
         };
-       
+       console.log(newRamen);
         ramens.push(newRamen)
-        newRamen.addEventListener("click", handleClick(newRamen))
+        displayRamens(ramens)
         e.target.reset(); 
         
     });
 }
 
+// addSubmitListener()
         
 function addItUp() {
-    displayRamens();
     addSubmitListener();
     handleClick(ramens[0]);
 }
